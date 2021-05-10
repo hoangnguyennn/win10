@@ -1,0 +1,20 @@
+@import './dock';
+@import './desktop';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.window {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/windows-10-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  position: relative;
+}
