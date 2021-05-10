@@ -6,6 +6,7 @@ const Desktop = () => {
     <div className="desktop">
       {desktopItems.map((item) => (
         <div
+          key={item.id}
           className={classnames({
             'desktop-icon': true,
             [item.name]: true,

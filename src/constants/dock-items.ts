@@ -1,6 +1,6 @@
-import { chrome, fileExplorer, vsCode, win10logo } from './icons';
+import { chrome, fileExplorer, vsCode, wifiFull, win10logo } from './icons';
 
-const dockItems = [
+export const dockItemsLeft = [
   {
     id: 'dock-1',
     name: 'start',
@@ -27,4 +27,11 @@ const dockItems = [
   },
 ];
 
-export default dockItems;
+export const dockItemsRight = [
+  {
+    id: 'dockr-1',
+    name: 'internet',
+    title: 'Internet access',
+    icon: wifiFull,
+  },
+];
