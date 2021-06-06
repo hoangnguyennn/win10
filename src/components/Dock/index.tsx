@@ -1,10 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import classnames from 'classnames';
-import { dockItemsLeft, dockItemsRight } from '../../constants/dock-items';
+import {
+  dockItemsLeft,
+  DockItemsLeftTitle,
+  dockItemsRight,
+} from '../../constants/dock-items';
 import dayOfWeek from '../../constants/day-of-week';
 import monthAsString from '../../constants/month-string';
+import { AppContext } from '../../contexts/app.context';
 
 const Dock = () => {
+  const { isOpenFileExplorer, openFileExplorer } = useContext(AppContext);
   const [time, setTime] = useState(new Date());
 
   const displayTime = () => {
@@ -19,6 +25,10 @@ const Dock = () => {
     return `${dayOfWeek[time.getDay()]}, ${
       monthAsString[time.getMonth()]
     } ${time.getDate()}, ${time.getFullYear()}`;
+  };
+
+  const isActive = (title: DockItemsLeftTitle) => {
+    return title === DockItemsLeftTitle.FileExplorer && isOpenFileExplorer;
   };
 
   useEffect(() => {
@@ -40,8 +50,15 @@ const Dock = () => {
             className={classnames({
               'dock-item': true,
               [item.name]: true,
+              active: isActive(item.title),
+              open: isActive(item.title),
             })}
             title={item.title}
+            onDoubleClick={() => {
+              if (item.title === DockItemsLeftTitle.FileExplorer) {
+                openFileExplorer();
+              }
+            }}
           >
             <img src={item.icon} alt="" />
           </div>
